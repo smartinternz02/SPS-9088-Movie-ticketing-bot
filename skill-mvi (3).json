@@ -1,0 +1,1164 @@
+{
+  "intents": [
+    {
+      "intent": "Booking",
+      "examples": [
+        {
+          "text": "can you please book a ticket for me"
+        },
+        {
+          "text": "can you please take a booking for me"
+        },
+        {
+          "text": "I want to book a ticket"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "enquiry",
+      "examples": [
+        {
+          "text": "Can I have a schedule of the movies"
+        },
+        {
+          "text": "Can you reserve seat for me"
+        },
+        {
+          "text": "What are the movies available now?"
+        },
+        {
+          "text": "Which movies can I watch?"
+        },
+        {
+          "text": "which type of shows you can let me see"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Greetings",
+      "examples": [
+        {
+          "text": "Good Afternoon"
+        },
+        {
+          "text": "Good Evening"
+        },
+        {
+          "text": "Good Morning"
+        },
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "Hi"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "booking",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Booking",
+          "synonyms": [
+            "orders"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "email",
+      "values": [
+        {
+          "type": "patterns",
+          "value": "email",
+          "patterns": [
+            "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "enquiry",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Movies",
+          "synonyms": [
+            "Films",
+            "shows"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Offers",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "shows",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "timing",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Greetings",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Good Afternoon",
+          "synonyms": [
+            "Gud Aftern"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Good Evening",
+          "synonyms": [
+            "GE"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Good Morning",
+          "synonyms": [
+            "GM",
+            "Gud mrng"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Movies",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "avatar",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "fast & furious",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "spider man",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "payment",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "credit cards",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "debit card",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "UPI",
+          "synonyms": [
+            "google pay ",
+            "paytm",
+            "phone pe"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "shows",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "avatar",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "fast & furious",
+          "synonyms": [
+            "ff"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "spider man",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-date",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-number",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-time",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Timing",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "First show",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Fourth show",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Second show",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Third show",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "webhooks": [
+    {
+      "url": "https://www.fast2sms.com/dev/bulkV2",
+      "name": "main_webhook",
+      "headers": [
+        {
+          "name": "authorization",
+          "value": "GYgHTcXOLpP1o5Q0V7s9aEBSdtlRKF3A4qnimeNzCjrMwDJbkUeHBIRu4shwrSDK8ytUz7mE50qf9dip"
+        }
+      ]
+    }
+  ],
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_10_1615723998976",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_4_1615718035976",
+      "event_name": "input",
+      "dialog_node": "handler_1_1615718035991"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1615718035976",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1615718035992",
+      "previous_sibling": "handler_1_1615718035991"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1615723998976",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1615724041825",
+      "previous_sibling": "node_10_1615725396175"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Which movie ticket do you want to book?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_2_1615724042728",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1615724042743",
+      "previous_sibling": "handler_4_1615724042743"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1615724781156",
+      "context": {
+        "date": "@sys-date"
+      },
+      "conditions": "@sys-date",
+      "event_name": "input",
+      "dialog_node": "handler_1_1615724781158"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Can you please give your contact no. ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_1_1615891273502",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1615891273503",
+      "previous_sibling": "handler_6_1615891273503"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_2_1615724042728",
+      "context": {
+        "movies": "@Movies"
+      },
+      "conditions": "@Movies",
+      "event_name": "input",
+      "dialog_node": "handler_4_1615724042743"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "How many tickets do you want me to book?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_4_1615724879622",
+      "event_name": "focus",
+      "dialog_node": "handler_4_1615724879622",
+      "previous_sibling": "handler_6_1615724879622"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_2_1615720070499",
+      "event_name": "focus",
+      "dialog_node": "handler_6_1615720070511",
+      "previous_sibling": "handler_9_1615720070510"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1615724879622",
+      "context": {
+        "seats": "@sys-number"
+      },
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_6_1615724879622"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_1_1615891273502",
+      "context": {
+        "number": "@sys-number"
+      },
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_6_1615891273503"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please enter preferred date of booking"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_4_1615724781156",
+      "event_name": "focus",
+      "dialog_node": "handler_7_1615724781158",
+      "previous_sibling": "handler_1_1615724781158"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_7_1615724837389",
+      "context": {
+        "time": "@sys-time"
+      },
+      "conditions": "@sys-time",
+      "event_name": "input",
+      "dialog_node": "handler_7_1615724837389"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please enter preferred time of booking"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_7_1615724837389",
+      "event_name": "focus",
+      "dialog_node": "handler_8_1615724837389",
+      "previous_sibling": "handler_7_1615724837389"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_2_1615720070499",
+      "event_name": "input",
+      "dialog_node": "handler_9_1615720070510"
+    },
+    {
+      "type": "standard",
+      "title": "email",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thank you  your mail id is $email. how may i help you ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "context": {
+        "email": "@email.literal"
+      },
+      "conditions": "@email",
+      "dialog_node": "node_10_1615720918767"
+    },
+    {
+      "type": "frame",
+      "title": "orders",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thank you. Your request for booking seats for the $movies movie on $date at $time of $seats has been booked. Tickets will be send to $number"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "#Booking || @booking",
+      "dialog_node": "node_10_1615723998976",
+      "previous_sibling": "node_4_1615719058658"
+    },
+    {
+      "type": "standard",
+      "title": "deleting context variables",
+      "output": {
+        "deleted": "<?context.remove('menu')?><?context.remove('number')?><?context.remove('number_2')?><?context.remove('email')?>",
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1615723998976",
+      "conditions": "true",
+      "dialog_node": "node_10_1615725396175",
+      "previous_sibling": "node_5_1615745099721"
+    },
+    {
+      "type": "standard",
+      "title": "price",
+      "parent": "node_7_1615720033401",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@Timing",
+      "dialog_node": "node_3_1615915121315"
+    },
+    {
+      "type": "standard",
+      "title": "enquiry",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#enquiry || @enquiry",
+      "dialog_node": "node_4_1615719058658",
+      "previous_sibling": "node_8_1615717858950"
+    },
+    {
+      "type": "standard",
+      "title": "message node",
+      "parent": "node_10_1615723998976",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "route": "q",
+            "message": "Thank you. Your request for booking seats for the $movies movie on $date at $time of $seats has been booked. Tickets will be send to $number",
+            "numbers": "$number",
+            "language": "english",
+            "sender_id": "FSTSMS"
+          },
+          "result_variable": "webhook_result_1"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_10_1615725396175"
+      },
+      "conditions": "true",
+      "dialog_node": "node_5_1615745099721"
+    },
+    {
+      "type": "standard",
+      "title": "Movies",
+      "parent": "node_4_1615719058658",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@Movies",
+      "dialog_node": "node_7_1615720033401"
+    },
+    {
+      "type": "standard",
+      "title": "Greetings",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#Greetings || @Greetings",
+      "dialog_node": "node_8_1615717858950",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "title": "Now Showing",
+            "options": [
+              {
+                "label": "spider man",
+                "value": {
+                  "input": {
+                    "text": "spider man"
+                  }
+                }
+              },
+              {
+                "label": "avatar",
+                "value": {
+                  "input": {
+                    "text": "avatar"
+                  }
+                }
+              },
+              {
+                "label": "fast & furious",
+                "value": {
+                  "input": {
+                    "text": "fast & furious"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_4_1615719058658",
+      "conditions": "@enquiry:Movies",
+      "dialog_node": "response_10_1615719583478",
+      "previous_sibling": "node_7_1615720033401"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Good Evening .How can I Help you"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1615717858950",
+      "conditions": "@Greetings:(Good Evening)",
+      "dialog_node": "response_1_1615718223766",
+      "previous_sibling": "response_7_1615718046346"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "title": "this is the price of the show",
+            "options": [
+              {
+                "label": "1 (Rs 120)",
+                "value": {
+                  "input": {
+                    "text": "1 (Rs 120)"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_4_1615719058658",
+      "conditions": "@enquiry:shows",
+      "dialog_node": "response_1_1615914667798",
+      "previous_sibling": "response_4_1615891784402"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "This is the Price of the show Silver(Rs.80), Gold (Rs.120, Platinum  (Rs.180)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1615915121315",
+      "conditions": "@Timing:(First show)",
+      "dialog_node": "response_1_1615915173047"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "This is the Price of the show Silver(Rs.80), Gold (Rs.120, Platinum  (Rs.180)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1615915121315",
+      "conditions": "@Timing:(Second show)",
+      "dialog_node": "response_1_1615915247455",
+      "previous_sibling": "response_1_1615915173047"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "source": "https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_.jpg",
+            "response_type": "image"
+          },
+          {
+            "title": "Timing",
+            "options": [
+              {
+                "label": "First show (9AM) (Available)",
+                "value": {
+                  "input": {
+                    "text": "First show (9AM) (Available)"
+                  }
+                }
+              },
+              {
+                "label": "Second show (12PM) (Available)",
+                "value": {
+                  "input": {
+                    "text": "Second show (12PM) (Available)"
+                  }
+                }
+              },
+              {
+                "label": "Third show (3AM) (Available)",
+                "value": {
+                  "input": {
+                    "text": "Third show (3AM) (Available)"
+                  }
+                }
+              },
+              {
+                "label": "Fourth show (6AM) (Available)",
+                "value": {
+                  "input": {
+                    "text": "Fourth show (6AM) (Available)"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_7_1615720033401",
+      "conditions": "@Movies:avatar",
+      "dialog_node": "response_2_1615720292224",
+      "previous_sibling": "response_4_1615720265375"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "This is the Price of the show Silver(Rs.80), Gold (Rs.120, Platinum  (Rs.180)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1615915121315",
+      "conditions": "@Timing:(Third show)",
+      "dialog_node": "response_2_1615915257456",
+      "previous_sibling": "response_1_1615915247455"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "This is the Price of the show Silver(Rs.80), Gold (Rs.120, Platinum  (Rs.180)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1615915121315",
+      "conditions": "@Timing:(Fourth show)",
+      "dialog_node": "response_3_1615915268687",
+      "previous_sibling": "response_2_1615915257456"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Good Afternoon .How can I Help you"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1615717858950",
+      "conditions": "@Greetings:(Good Afternoon)",
+      "dialog_node": "response_4_1615718265420",
+      "previous_sibling": "response_1_1615718223766"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "source": "https://upload.wikimedia.org/wikipedia/en/b/bd/Spider-Man_Far_From_Home_poster.jpg",
+            "response_type": "image"
+          },
+          {
+            "title": "Timing",
+            "options": [
+              {
+                "label": "First show (9AM) (Available)",
+                "value": {
+                  "input": {
+                    "text": "First show (9AM) (Available)"
+                  }
+                }
+              },
+              {
+                "label": "Second show (12PM) (Available)",
+                "value": {
+                  "input": {
+                    "text": "Second show (12PM) (Available)"
+                  }
+                }
+              },
+              {
+                "label": "Third show (3AM) (Available)",
+                "value": {
+                  "input": {
+                    "text": "Third show (3AM) (Available)"
+                  }
+                }
+              },
+              {
+                "label": "Fourth show (6AM) (Available)",
+                "value": {
+                  "input": {
+                    "text": "Fourth show (6AM) (Available)"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_7_1615720033401",
+      "conditions": "@Movies:(spider man)",
+      "dialog_node": "response_4_1615720265375",
+      "previous_sibling": "response_7_1615720080222"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_5_1615745099721",
+      "conditions": "anything_else",
+      "dialog_node": "response_4_1615746291940",
+      "previous_sibling": "response_8_1615745677521"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": ""
+              },
+              {
+                "text": "20% off in beverages"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "10% on credit card"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1615719058658",
+      "conditions": "@enquiry:Offers",
+      "dialog_node": "response_4_1615891784402",
+      "previous_sibling": "response_10_1615719583478"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Good Morning .How can I Help you"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1615717858950",
+      "conditions": "@Greetings:(Good Morning)",
+      "dialog_node": "response_7_1615718046346"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "source": "https://i.ytimg.com/vi/aSiDu3Ywi8E/maxresdefault.jpg",
+            "response_type": "image"
+          },
+          {
+            "title": "Timing",
+            "options": [
+              {
+                "label": "First show (9AM) (Available)",
+                "value": {
+                  "input": {
+                    "text": "First show (9AM) (Available)"
+                  }
+                }
+              },
+              {
+                "label": "Second show (12PM) (Available)",
+                "value": {
+                  "input": {
+                    "text": "Second show (12PM) (Available)"
+                  }
+                }
+              },
+              {
+                "label": "Third show (3AM) (Available)",
+                "value": {
+                  "input": {
+                    "text": "Third show (3AM) (Available)"
+                  }
+                }
+              },
+              {
+                "label": "Fourth show (6AM) (Available)",
+                "value": {
+                  "input": {
+                    "text": "Fourth show (6AM) (Available)"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_7_1615720033401",
+      "conditions": "@Movies:(fast & furious)",
+      "dialog_node": "response_7_1615720080222",
+      "previous_sibling": "node_3_1615915121315"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello How may I assist you"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1615717858950",
+      "conditions": "anything_else",
+      "dialog_node": "response_8_1615718394938",
+      "previous_sibling": "response_4_1615718265420"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "message sent"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_5_1615745099721",
+      "conditions": "$webhook_result_1",
+      "dialog_node": "response_8_1615745677521"
+    },
+    {
+      "type": "slot",
+      "parent": "node_10_1615723998976",
+      "variable": "$number",
+      "dialog_node": "slot_1_1615891273502",
+      "previous_sibling": "slot_4_1615724879622"
+    },
+    {
+      "type": "slot",
+      "parent": "node_7_1615720033401",
+      "dialog_node": "slot_2_1615720070499",
+      "previous_sibling": "response_2_1615720292224"
+    },
+    {
+      "type": "slot",
+      "parent": "node_10_1615723998976",
+      "variable": "$movies",
+      "dialog_node": "slot_2_1615724042728",
+      "previous_sibling": "handler_1_1615724041825"
+    },
+    {
+      "type": "slot",
+      "parent": "node_8_1615717858950",
+      "dialog_node": "slot_4_1615718035976",
+      "previous_sibling": "response_8_1615718394938"
+    },
+    {
+      "type": "slot",
+      "parent": "node_10_1615723998976",
+      "variable": "$date",
+      "dialog_node": "slot_4_1615724781156",
+      "previous_sibling": "slot_2_1615724042728"
+    },
+    {
+      "type": "slot",
+      "parent": "node_10_1615723998976",
+      "variable": "$seats",
+      "dialog_node": "slot_4_1615724879622",
+      "previous_sibling": "slot_7_1615724837389"
+    },
+    {
+      "type": "slot",
+      "parent": "node_10_1615723998976",
+      "variable": "$time",
+      "dialog_node": "slot_7_1615724837389",
+      "previous_sibling": "slot_4_1615724781156"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. I am a Movie Ticketing Bot capable of showing Movies playing, Timing, Discount and Book your tickets. How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "mvi",
+  "language": "en",
+  "description": ""
+}
